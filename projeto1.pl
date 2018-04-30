@@ -1,3 +1,26 @@
+%% "funcao" main %%
+topo :- read(IN),proc(IN,NRet),find_int(NRet,NInt,AInt),imprime(NInt,AInt).
+topo :- print("erro na leitura").
+
+%% proc armazena no banco de dados os dados dos retangulos
+%  e tambem salva em NRet a quantidade dada na entrada
+proc(IN,NRet) :- proc(IN,NRet,0).
+
+proc([],Acc,Acc).
+proc([rect(N,X1,Y1,X2,Y2)|L],NRet,Acc) :-
+	asserta(rect(N,X1,Y1,X2,Y2)),
+	AccX is Acc+1,
+	proc(L,NRet,AccX).
+
+%% eh a funcao responsavel para calcular as interseccoes
+%%find_int(NRet,OUT) :-
+
+%% impressao da saida
+imprime(NInt,AInt) :- write("numero total de inteserseccoes: "), write(NInt),
+    nl, write("area total: "), write(AInt), nl.
+	
+%% "funcao" main %%
+
 %rect(N,x1,y1,x2,y2)
 %N: número do retângulo
 %x1: coordenada x do lado esquerdo (menor x)
