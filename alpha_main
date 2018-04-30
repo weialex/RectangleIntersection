@@ -1,0 +1,7 @@
+topo :- read(IN),proc(IN), write("funcionou").
+topo :- print("erro na leitura").
+
+proc([]).
+proc([rect(N,XE,YS,XD,YI)|L]) :-
+	asserta(rect(N,XE,YS,XD,YI)),
+	proc(L).
